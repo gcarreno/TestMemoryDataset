@@ -1,6 +1,6 @@
-# Test Memory Datset
+# Test Memory Dataset
 
-An application to demosrate how to use `TMemDataset`.
+An application to demonstrate how to use `TMemDataset`.
 
 This particular component does not have a feature to sort the data.
 

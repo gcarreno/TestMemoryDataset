@@ -48,39 +48,83 @@ object frmMain: TfrmMain
       TabOrder = 1
     end
   end
+  object gbAccountsFilter: TGroupBox
+    Left = 0
+    Height = 51
+    Top = 37
+    Width = 800
+    Align = alTop
+    Caption = ' Filter '
+    ClientHeight = 33
+    ClientWidth = 798
+    TabOrder = 3
+    object lblAccountsFilterAlias: TLabel
+      Left = 4
+      Height = 29
+      Top = 4
+      Width = 94
+      Align = alLeft
+      BorderSpacing.Left = 4
+      BorderSpacing.Top = 4
+      Caption = 'Filter by Alias:'
+    end
+    object edtAccountsFilterAlias: TEdit
+      Left = 102
+      Height = 29
+      Top = 4
+      Width = 316
+      Align = alLeft
+      BorderSpacing.Left = 4
+      BorderSpacing.Top = 4
+      TabOrder = 0
+      OnChange = edtAccountsFilterAliasChange
+    end
+    object imgAccountsFilterClear: TImage
+      Left = 422
+      Height = 29
+      Top = 4
+      Width = 30
+      Align = alLeft
+      AutoSize = True
+      BorderSpacing.Left = 4
+      BorderSpacing.Top = 4
+      Center = True
+      Images = ilMain
+      OnClick = actAccountsFilterClearExecute
+    end
+  end
   object dbgAccounts: TDBGrid
     Left = 4
-    Height = 380
-    Top = 97
+    Height = 385
+    Top = 92
     Width = 792
     Align = alClient
     BorderSpacing.Around = 4
     Color = clWindow
     Columns = <    
       item
-        MinSize = 0
         Title.Caption = 'HASH'
-        Width = 64
+        Width = 53
         FieldName = 'HASH'
       end    
       item
         Title.Caption = 'Alias'
-        Width = 64
+        Width = 47
         FieldName = 'Alias'
       end    
       item
         Title.Caption = 'Label'
-        Width = 64
+        Width = 51
         FieldName = 'Label'
       end    
       item
         Title.Caption = 'Pending'
-        Width = 64
+        Width = 68
         FieldName = 'Pending'
       end    
       item
         Title.Caption = 'Balance'
-        Width = 64
+        Width = 67
         FieldName = 'Balance'
       end>
     DataSource = dsAccounts
@@ -95,39 +139,6 @@ object frmMain: TfrmMain
     Top = 481
     Width = 800
     Panels = <>
-  end
-  object gbAccountsFilter: TGroupBox
-    Left = 0
-    Height = 56
-    Top = 37
-    Width = 800
-    Align = alTop
-    AutoSize = True
-    Caption = ' Filter '
-    ClientHeight = 38
-    ClientWidth = 798
-    TabOrder = 3
-    object lblAccountsFilterAlias: TLabel
-      Left = 4
-      Height = 34
-      Top = 4
-      Width = 94
-      Align = alLeft
-      BorderSpacing.Left = 4
-      BorderSpacing.Top = 4
-      Caption = 'Filter by Alias:'
-    end
-    object edtAccountsFilterAlias: TEdit
-      Left = 102
-      Height = 34
-      Top = 4
-      Width = 316
-      Align = alLeft
-      BorderSpacing.Left = 4
-      BorderSpacing.Top = 4
-      TabOrder = 0
-      OnChange = edtAccountsFilterAliasChange
-    end
   end
   object mmMain: TMainMenu
     Left = 335
@@ -159,6 +170,12 @@ object frmMain: TfrmMain
       Caption = '&Clear'
       Hint = 'Clear|Clear the entire dataset'
       OnExecute = actAccountsClearExecute
+    end
+    object actAccountsFilterClear: TAction
+      Category = 'Accounts'
+      Caption = '< X'
+      Hint = 'Clear Filter|Clear the comtent opf the filter string'
+      OnExecute = actAccountsFilterClearExecute
     end
   end
   object mdsAccounts: TMemDataset
@@ -246,5 +263,34 @@ object frmMain: TfrmMain
     DataSet = mdsAccounts
     Left = 576
     Top = 393
+  end
+  object ilMain: TImageList
+    Height = 30
+    Scaled = True
+    Width = 30
+    Left = 664
+    Top = 394
+    Bitmap = {
+      4C7A020000001E0000001E000000520200000000000078DAED983B4B034110C7
+      AF13139B68254A121FA8887E01F1DD59A86520167E0E4510C147A7161A838549
+      679246505444D0C2462CB4D1984609263E1AD122C6CE380B73302C7B7B9BE42E
+      D7DCC00FC2CDDEFEEF66E76676A369AEB956336B04F68134F0641119601DF049
+      749340C92662069A6D4011C7B0E78C5B440EE77C1368B60037E87F06FA2D5CBB
+      239CF74BE08B027FE89F11F8278145C06B30772BB08DF9A1AADB4DE27B0BD471
+      FE668C151BB366A07981F7EF020D8ABAA764ED870DE64D93312BC417C07CD57D
+      CB804741378CD7588C2392350A70DAAB1827FE9ACAFA7692FBEE817693FC1802
+      F2389EC53C4B340F256BCFEBA6482E4D28E6261F73FD3DBD65E473D221DD01E0
+      03AF9D034D269A7EE05250878A5CAEA97C472107F2CAC9EF88D908B9EF40A0DB
+      03FCA2FF5830EF20F082FE3341DF91D5C91D0BEAE456997552EF0BD70EF40566
+      A324DE6CCD672DE20EE7FC943C5BC2C6BEBF27D1F5D9B0CF7954D8E768983B7E
+      ACD7561010F456D75C73CDB56ACD8735DAEAF3E0A6418FAC455F881B6806C979
+      C50EDE4DFABE886F8579CDC688FA7E84EC73785E813E600E28188C61E7B65E60
+      09F851D4ED92C497EDE7A6705C3DB02018C3F6746338C623C9115EF7C4243E79
+      7C17DDE6892F2BF0151474438A39219A3F23791E996E07F050463E5EE17E558F
+      7990684E4BDEB3243997A9C2C7DC2CB622DD5405BA390B74E97950059AB7D48C
+      F25C96576107F24A741EACD577C46C5CA249EB8686BF0B26799E28A34E4615EA
+      A4EC5DF215D449FE7FC25AF6050D73B564234E9D07630E9C07374CF639EE79D0
+      B5AAEC1F7E7FB6FE
+    }
   end
 end

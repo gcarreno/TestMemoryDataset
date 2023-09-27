@@ -19,7 +19,8 @@ uses
 , ExtCtrls
 , StdCtrls
 , DBCtrls
-, DBGrids, ComCtrls
+, DBGrids
+, ComCtrls
 ;
 
 type
@@ -29,6 +30,7 @@ type
   TfrmMain = class(TForm)
     actAccountsClear: TAction;
     actAccountsAddData: TAction;
+    actAccountsFilterClear: TAction;
     alMain: TActionList;
     actFileExit: TFileExit;
     btnAccountsClear: TButton;
@@ -37,6 +39,8 @@ type
     dsAccounts: TDataSource;
     edtAccountsFilterAlias: TEdit;
     gbAccountsFilter: TGroupBox;
+    ilMain: TImageList;
+    imgAccountsFilterClear: TImage;
     lblAccountsFilterAlias: TLabel;
     mdsAccounts: TMemDataset;
     mdsAccountsBalance: TCurrencyField;
@@ -51,6 +55,7 @@ type
     sbMain: TStatusBar;
     procedure actAccountsAddDataExecute(Sender: TObject);
     procedure actAccountsClearExecute(Sender: TObject);
+    procedure actAccountsFilterClearExecute(Sender: TObject);
     procedure alMainUpdate(AAction: TBasicAction; var Handled: Boolean);
     procedure edtAccountsFilterAliasChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -83,6 +88,7 @@ begin
   Caption:= Format('%s v%s', [ Application.Title, cVersion ]);
   Application.OnHint:= @DisplayHint;
   InitShortcuts;
+  imgAccountsFilterClear.ImageIndex:= 0;
   mdsAccounts.Active:= True;
 end;
 
@@ -103,11 +109,18 @@ end;
 
 procedure TfrmMain.alMainUpdate(AAction: TBasicAction; var Handled: Boolean);
 begin
-  if AAction = actAccountsClear then
-  begin
-    actAccountsClear.Enabled:= mdsAccounts.RecordCount > 0;
-    Handled:= True;
+  // Clear Data
+  actAccountsClear.Enabled:= mdsAccounts.RecordCount > 0;
+
+  // Filter Clear
+  actAccountsFilterClear.Enabled:= Length(edtAccountsFilterAlias.Text) > 0;
+  imgAccountsFilterClear.Enabled:= actAccountsFilterClear.Enabled;
+  case imgAccountsFilterClear.Enabled of
+    False: imgAccountsFilterClear.ImageIndex:= 0;
+    True: imgAccountsFilterClear.ImageIndex:= 1;
   end;
+
+  Handled:= True;
 end;
 
 procedure TfrmMain.edtAccountsFilterAliasChange(Sender: TObject);
@@ -118,7 +131,7 @@ begin
   if Length(Trim(edtAccountsFilterAlias.Text)) > 0 then
   begin
     mdsAccounts.FilterOptions:= [foCaseInsensitive];
-    mdsAccounts.Filter:= Format('Alias=%s', [
+    mdsAccounts.Filter:= Format('Alias="*%s*"', [
     Trim(edtAccountsFilterAlias.Text)
     ]);
     mdsAccounts.Filtered:= True;
@@ -152,6 +165,18 @@ begin
 
   Application.ProcessMessages;
   actAccountsClear.Enabled:= True;
+end;
+
+procedure TfrmMain.actAccountsFilterClearExecute(Sender: TObject);
+begin
+  actAccountsFilterClear.Enabled:= False;
+  Application.ProcessMessages;
+
+  edtAccountsFilterAlias.Clear;
+  edtAccountsFilterAlias.SetFocus;
+
+  Application.ProcessMessages;
+  actAccountsFilterClear.Enabled:= True;
 end;
 
 procedure TfrmMain.actAccountsAddDataExecute(Sender: TObject);

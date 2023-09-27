@@ -74,6 +74,7 @@ implementation
 
 uses
   LCLType
+, LCLProc
 ;
 
 const
@@ -89,6 +90,11 @@ begin
   Application.OnHint:= @DisplayHint;
   InitShortcuts;
   imgAccountsFilterClear.ImageIndex:= 0;
+  imgAccountsFilterClear.Hint:= Format('%s (%s)|%s', [
+    GetShortHint(actAccountsFilterClear.Hint),
+    ShortCutToText(actAccountsFilterClear.ShortCut),
+    GetLongHint(actAccountsFilterClear.Hint)
+  ]);
   mdsAccounts.Active:= True;
 end;
 

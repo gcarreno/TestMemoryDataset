@@ -11,6 +11,7 @@ object frmMain: TfrmMain
   Menu = mmMain
   Position = poScreenCenter
   ShowHint = True
+  LCLVersion = '3.99.0.0'
   OnCreate = FormCreate
   object panButtons: TPanel
     Left = 0
@@ -164,18 +165,21 @@ object frmMain: TfrmMain
       Category = 'Accounts'
       Caption = '&Add Data'
       Hint = 'Add Data|Add a row with some fixed data'
+      ShortCut = 32833
       OnExecute = actAccountsAddDataExecute
     end
     object actAccountsClearData: TAction
       Category = 'Accounts'
       Caption = '&Clear Data'
       Hint = 'Clear Data|Clear the entire dataset'
+      ShortCut = 32858
       OnExecute = actAccountsClearDataExecute
     end
     object actAccountsFilterClear: TAction
       Category = 'Accounts'
       Caption = '< X'
-      Hint = 'Clear Filter|Clear the comtent opf the filter string'
+      Hint = 'Clear Filter|Clear the filter'
+      ShortCut = 32835
       OnExecute = actAccountsFilterClearExecute
     end
   end

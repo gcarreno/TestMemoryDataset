@@ -33,7 +33,7 @@ type
     actAccountsFilterClear: TAction;
     alMain: TActionList;
     actFileExit: TFileExit;
-    btnAccountsClear: TButton;
+    btnAccountsClearData: TButton;
     btnAccountsAddData: TButton;
     dbgAccounts: TDBGrid;
     dsAccounts: TDataSource;
@@ -161,6 +161,7 @@ begin
   dbgAccounts.BeginUpdate;
 
   mdsAccounts.Clear(False);
+  edtAccountsFilterByAlias.Clear;
 
   dbgAccounts.AutoAdjustColumns;
   dbgAccounts.EndUpdate;

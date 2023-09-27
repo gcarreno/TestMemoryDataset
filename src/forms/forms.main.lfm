@@ -11,7 +11,6 @@ object frmMain: TfrmMain
   Menu = mmMain
   Position = poScreenCenter
   ShowHint = True
-  LCLVersion = '3.99.0.0'
   OnCreate = FormCreate
   object panButtons: TPanel
     Left = 0
@@ -36,11 +35,11 @@ object frmMain: TfrmMain
       BorderSpacing.Top = 4
       TabOrder = 0
     end
-    object btnAccountsClear: TButton
+    object btnAccountsClearData: TButton
       Left = 87
       Height = 33
       Top = 4
-      Width = 51
+      Width = 86
       Action = actAccountsClearData
       Align = alLeft
       AutoSize = True
@@ -169,7 +168,7 @@ object frmMain: TfrmMain
     end
     object actAccountsClearData: TAction
       Category = 'Accounts'
-      Caption = '&Clear'
+      Caption = '&Clear Data'
       Hint = 'Clear Data|Clear the entire dataset'
       OnExecute = actAccountsClearDataExecute
     end

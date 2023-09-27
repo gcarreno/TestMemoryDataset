@@ -11,6 +11,7 @@ object frmMain: TfrmMain
   Menu = mmMain
   Position = poScreenCenter
   ShowHint = True
+  LCLVersion = '3.99.0.0'
   OnCreate = FormCreate
   object panButtons: TPanel
     Left = 0
@@ -40,7 +41,7 @@ object frmMain: TfrmMain
       Height = 33
       Top = 4
       Width = 51
-      Action = actAccountsClear
+      Action = actAccountsClearData
       Align = alLeft
       AutoSize = True
       BorderSpacing.Left = 4
@@ -68,7 +69,7 @@ object frmMain: TfrmMain
       BorderSpacing.Top = 4
       Caption = 'Filter by Alias:'
     end
-    object edtAccountsFilterAlias: TEdit
+    object edtAccountsFilterByAlias: TEdit
       Left = 102
       Height = 29
       Top = 4
@@ -77,7 +78,8 @@ object frmMain: TfrmMain
       BorderSpacing.Left = 4
       BorderSpacing.Top = 4
       TabOrder = 0
-      OnChange = edtAccountsFilterAliasChange
+      TextHint = 'Enter something to filter by'
+      OnChange = edtAccountsFilterByAliasChange
     end
     object imgAccountsFilterClear: TImage
       Left = 422
@@ -165,11 +167,11 @@ object frmMain: TfrmMain
       Hint = 'Add Data|Add a row with some fixed data'
       OnExecute = actAccountsAddDataExecute
     end
-    object actAccountsClear: TAction
+    object actAccountsClearData: TAction
       Category = 'Accounts'
       Caption = '&Clear'
-      Hint = 'Clear|Clear the entire dataset'
-      OnExecute = actAccountsClearExecute
+      Hint = 'Clear Data|Clear the entire dataset'
+      OnExecute = actAccountsClearDataExecute
     end
     object actAccountsFilterClear: TAction
       Category = 'Accounts'

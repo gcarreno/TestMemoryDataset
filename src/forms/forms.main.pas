@@ -156,7 +156,8 @@ end;
 procedure TfrmMain.mdsAccountsFilterRecord(DataSet: TDataSet;
   var Accept: Boolean);
 begin
-  Accept := Pos(UpperCase(edtAccountsFilterByAlias.Text), UpperCase(DataSet.FieldByName('Alias').AsString)) > 0;
+  Accept := Pos(UpperCase(edtAccountsFilterByAlias.Text),
+                UpperCase(DataSet.FieldByName('Alias').AsString)) > 0;
 end;
 
 procedure TfrmMain.actAccountsClearDataExecute(Sender: TObject);

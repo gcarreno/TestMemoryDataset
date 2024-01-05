@@ -46,13 +46,13 @@ jobs:
               }
             ],
             "lazarus-versions": [
-              "stable"
+              "stable, 2.2.6"
             ]
           }
         }'
 
     strategy:
-      fail-fast: true
+      fail-fast: false
 
   release:
     if: contains(github.ref_type, 'tag')
@@ -71,4 +71,4 @@ jobs:
         }'
 
     strategy:
-      fail-fast: true
+      fail-fast: false
